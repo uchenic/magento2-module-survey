@@ -24,7 +24,7 @@ class InstallSchema implements InstallSchemaInterface
         $table = $installer->getConnection()
             ->newTable($installer->getTable('survey_entity'))
             ->addColumn(
-                'enyity_id',
+                'entity_id',
                 Table::TYPE_INTEGER,
                 null,
                 ['identity' => true, 'nullable' => false, 'primary' => true,'unsigned'=>true],
