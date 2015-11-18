@@ -27,7 +27,7 @@ class InstallSchema implements InstallSchemaInterface
                 'enyity_id',
                 Table::TYPE_INTEGER,
                 null,
-                ['identity' => true, 'nullable' => false, 'primary' => true],
+                ['identity' => true, 'nullable' => false, 'primary' => true,'unsigned'=>true],
                 'Survey ID'
             )
             ->addColumn('name', Table::TYPE_TEXT, 255, ['nullable' => true], 'Survey Title')            
@@ -41,7 +41,7 @@ class InstallSchema implements InstallSchemaInterface
                 'id',
                 Table::TYPE_INTEGER,
                 null,
-                ['identity' => true, 'nullable' => false, 'primary' => true],
+                ['identity' => true, 'nullable' => false, 'primary' => true,'unsigned'=>true],
                 'Question ID'
             )
             ->addColumn('question', Table::TYPE_TEXT, 1024, ['nullable' => true], 'Survey Title')
@@ -56,7 +56,7 @@ class InstallSchema implements InstallSchemaInterface
                 'id',
                 Table::TYPE_INTEGER,
                 null,
-                ['identity' => true, 'nullable' => false, 'primary' => true],
+                ['identity' => true, 'nullable' => false, 'primary' => true,'unsigned'=>true],
                 'Answer ID'
             )
             ->addColumn('answer', Table::TYPE_TEXT, 1024, ['nullable' => true], 'Survey Title')
@@ -71,7 +71,7 @@ class InstallSchema implements InstallSchemaInterface
                 'id',
                 Table::TYPE_INTEGER,
                 null,
-                ['identity' => true, 'nullable' => false, 'primary' => true],
+                ['identity' => true, 'nullable' => false, 'primary' => true,'unsigned'=>true],
                 'Result ID'
             )
             ->addColumn('answer_id',Table::TYPE_INTEGER,null,['nullable' => false,'unsigned'=>true])
