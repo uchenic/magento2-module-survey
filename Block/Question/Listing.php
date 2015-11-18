@@ -2,10 +2,9 @@
 namespace Magento\Survey\Block\Question;
 
 //use Ashsmith\Blog\Api\Data\PostInterface;
-use Magento\Survey\Model\Resource\Question\Collection as QuestionCollection;
+//use Magento\Survey\Model\Resource\Question\Collection as QuestionCollection;
 
-class Listing extends \Magento\Framework\View\Element\Template implements
-    \Magento\Framework\Object\IdentityInterface
+class Listing extends \Magento\Framework\View\Element\Template 
 {
     protected $_template = 'list.phtml';
     /**
@@ -17,7 +16,8 @@ class Listing extends \Magento\Framework\View\Element\Template implements
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        Magento\Survey\Model\Resource\Question\CollectionFactory $questionCollectionFactory,
+        \Magento\Framework\Registry $registry,
+        \Magento\Survey\Model\Resource\Question\CollectionFactory $questionCollectionFactory,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -43,14 +43,6 @@ class Listing extends \Magento\Framework\View\Element\Template implements
         return $this->getData('questions');
     }
 
-    /**
-     * Return identifiers for produced content
-     *
-     * @return array
-     */
-    public function getIdentities()
-    {
-        return ['survey_question'. '_' . 'list'];
-    }
+    
 
 }
