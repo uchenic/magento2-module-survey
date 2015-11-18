@@ -4,7 +4,7 @@ namespace Magento\Survey\Block\Question;
 //use Ashsmith\Blog\Api\Data\PostInterface;
 use Magento\Survey\Model\Resource\Question\Collection as QuestionCollection;
 
-class List extends \Magento\Framework\View\Element\Template implements
+class Listing extends \Magento\Framework\View\Element\Template implements
     \Magento\Framework\Object\IdentityInterface
 {
     protected $_template = 'list.phtml';
