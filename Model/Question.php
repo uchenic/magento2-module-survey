@@ -5,7 +5,7 @@ namespace Magento\Survey\Model;
 
 class Question extends \Magento\Framework\Model\AbstractModel 
 {
-    protected $_answerCollection;
+    
 
 	function __construct(
         \Magento\Framework\Model\Context $context,

@@ -45,16 +45,16 @@ class Listing extends \Magento\Framework\View\Element\Template
         return $this->getData('questions');
     }
 
-    public function getQuestionAnswers($qustion_id)
+    public function getQuestionAnswers($question_id)
     {
-         if (!$this->hasData('answers')) {
+         if (!$this->hasData('answers'.$question_id)) {
             $answers = $this->_answerCollectionFactory
                 ->create()
                 ->addFieldToFilter('question_id', array('eq' => $question_id));
                 
-            $this->setData('answers', $answers);
+            $this->setData('answers'.$question_id, $answers);
         }
-        return $this->getData('answers');
+        return $this->getData('answers'.$question_id);
     }
 
     
