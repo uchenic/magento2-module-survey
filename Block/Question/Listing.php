@@ -18,10 +18,12 @@ class Listing extends \Magento\Framework\View\Element\Template
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Survey\Model\Resource\Question\CollectionFactory $questionCollectionFactory,
+        \Magento\Survey\Model\Resource\Answer\CollectionFactory $answerCollectionFactory,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->_questionCollectionFactory = $questionCollectionFactory;
+        $this->_answerCollectionFactory = $answerCollectionFactory;
     }
 
     /**
@@ -41,6 +43,18 @@ class Listing extends \Magento\Framework\View\Element\Template
             $this->setData('questions', $questions);
         }
         return $this->getData('questions');
+    }
+
+    public function getQuestionAnswers($qustion_id)
+    {
+         if (!$this->hasData('answers')) {
+            $answers = $this->_answerCollectionFactory
+                ->create()
+                ->addFieldToFilter('question_id', array('eq' => $question_id));
+                
+            $this->setData('answers', $answers);
+        }
+        return $this->getData('answers');
     }
 
     

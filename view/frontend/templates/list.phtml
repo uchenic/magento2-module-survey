@@ -9,11 +9,11 @@
         <div class="blog-post-item-content">
             <?php echo $post->getQuestion(); ?>
         </div>
-        <?php foreach ($post->getQuestionAnswers() as $answer) {
+        <?php foreach ($block->getQuestionAnswers($post->getId()) as $answer) {
 
-            echo $answer->getAnswer();
+             echo $answer->getAnswer();
         }
-
+        ?>
         <div class="blog-post-item-meta">
             <strong><?php echo __('Created at:') ?></strong> <?php //echo $post->getCreationTime() ?>
         </div>

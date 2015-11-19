@@ -12,10 +12,10 @@ class Question extends \Magento\Framework\Model\AbstractModel
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Model\Resource\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
-        \Magento\Survey\Model\Resource\Answer\CollectionFactory $answerCollectionFactory,
+      
         array $data = [])
     {
-        $this->_answerCollection=$answerCollectionFactory;
+       
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
 
@@ -24,10 +24,5 @@ class Question extends \Magento\Framework\Model\AbstractModel
         $this->_init('Magento\Survey\Model\Resource\Question');
     }
 
-    public function getQuestionAnswers()
-    {
-        return $this->_answerCollection
-        ->create()
-        ->addFieldToFilter('question_id', array('eq' => $this->getData('id')));
-    }
+   
 }
