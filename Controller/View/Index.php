@@ -12,18 +12,22 @@ class Index extends Action
 
     protected $_survey;
 
+    //protected $_surveyFactory;
+
     /**
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(\Magento\Framework\App\Action\Context $context,
                                 \Magento\Framework\Controller\Result\ForwardFactory $resultForwardFactory,
                                 \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-                                \Magento\Survey\Model\Surevey $survey,
+                                //\Magento\Survey\Model\SurveyFactory $surveyFactory,
+                                \Magento\Survey\Model\Survey $survey
     )
     {
         $this->resultForwardFactory = $resultForwardFactory;
         $this->resultPageFactory = $resultPageFactory;
-        $this->survey=$survey;
+        $this->_survey=$survey;
+        //$this->_surveyFactory=$surveyFactory;
         parent::__construct($context);
     }
 
@@ -40,15 +44,17 @@ class Index extends Action
 
         $resultPage = $this->resultPageFactory->create();
         // We can add our own custom page handles for layout easily.
-        $resultPage->addHandle('surevey_form_view');
+        //$resultPage->addHandle('surevey_view_index');
+        //$this->_survey->load(1);
 
+        //echo $this->_survey->getName();
         // This will generate a layout handle like: blog_post_view_id_1
         // giving us a unique handle to target specific blog posts if we wish to.
         //$this->_survey->getId()
         $resultPage->addPageLayoutHandles(['id' => $survey_id]);
 
-        /** @var \Ashsmith\Blog\Helper\Post $post_helper */
-        //$post_helper = $this->_objectManager->get('Ashsmith\Blog\Helper\Post');
+        // /** @var \Ashsmith\Blog\Helper\Post $post_helper */
+        // //$post_helper = $this->_objectManager->get('Ashsmith\Blog\Helper\Post');
         $result_page = $resultPage;//$post_helper->prepareResultPost($this, $post_id);
         if (!$result_page) {
             $resultForward = $this->resultForwardFactory->create();

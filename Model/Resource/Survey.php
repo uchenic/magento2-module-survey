@@ -42,8 +42,5 @@ class Survey extends AbstractDb
         return parent::load($object, $value, $field);
     }
 
-    public function loadQuetions()
-    {
-        # code...
-    }
+    
 }
