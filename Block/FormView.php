@@ -1,8 +1,7 @@
 <?php
-namespace Ashsmith\Blog\Block;
+namespace Magento\Suvey\Block;
 
-class PostView extends \Magento\Framework\View\Element\Template implements
-    \Magento\Framework\DataObject\IdentityInterface
+class FormView extends \Magento\Framework\View\Element\Template 
 {
 
     /**
@@ -15,8 +14,8 @@ class PostView extends \Magento\Framework\View\Element\Template implements
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Ashsmith\Blog\Model\Post $post,
-        \Ashsmith\Blog\Model\PostFactory $postFactory,
+        \Magento\Suvey\Model\Survey $post,
+        \Magento\Suvey\Model\SurveyFactory $postFactory,
         array $data = []
     )
     {
@@ -35,7 +34,7 @@ class PostView extends \Magento\Framework\View\Element\Template implements
         // pass the 'posts' data to this block, with a collection
         // that has been filtered differently!
         if (!$this->hasData('post')) {
-            if ($this->getPostId()) {
+            if ($this->getSurveyId()) {
                 /** @var \Ashsmith\Blog\Model\Post $page */
                 $post = $this->_postFactory->create();
             } else {
