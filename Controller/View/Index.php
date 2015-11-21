@@ -12,7 +12,7 @@ class Index extends Action
 
     protected $_survey;
 
-    //protected $_surveyFactory;
+    $this->_coreRegistry = $coreRegistry;
 
     /**
      * @param \Magento\Framework\App\Action\Context $context
@@ -20,7 +20,7 @@ class Index extends Action
     public function __construct(\Magento\Framework\App\Action\Context $context,
                                 \Magento\Framework\Controller\Result\ForwardFactory $resultForwardFactory,
                                 \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-                                //\Magento\Survey\Model\SurveyFactory $surveyFactory,
+                                \Magento\Framework\Registry $coreRegistry,
                                 \Magento\Survey\Model\Survey $survey
     )
     {
@@ -45,8 +45,19 @@ class Index extends Action
         $resultPage = $this->resultPageFactory->create();
         // We can add our own custom page handles for layout easily.
         //$resultPage->addHandle('surevey_view_index');
-        //$this->_survey->load(1);
+        if ($survey_id!==false) {
+            $this->_survey->load($survey_id);
+        } else {
+           $this->_survey->load(1);
+        }
+        
+        
 
+
+        //$shippingInfoModel = $this->_shippingInfoFactory->create()->loadByHash($this->getRequest()->getParam('hash'));
+        $this->_coreRegistry->register('current_survey', $this->_survey);
+        $this->_coreRegistry->register('current_survey_user', $user_id);
+        
         //echo $this->_survey->getName();
         // This will generate a layout handle like: blog_post_view_id_1
         // giving us a unique handle to target specific blog posts if we wish to.

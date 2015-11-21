@@ -4,7 +4,7 @@ namespace Magento\Survey\Block;
 class Form extends \Magento\Framework\View\Element\Template 
 {
     // protected $_post;
-     protected $_post;
+     protected $_coreRegistry;
      protected $_template = 'view.phtml';
     /**
      * Construct
@@ -16,36 +16,33 @@ class Form extends \Magento\Framework\View\Element\Template
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        //\Magento\Framework\Registry $registry,
+        \Magento\Framework\Registry $registry,
         //\Magento\Suvey\Model\Survey $post,
         //\Magento\Suvey\Model\SurveyFactory $postFactory,
         array $data = []
     )
     {
         parent::__construct($context, $data);
-       // $this->_post = $post;
+        $this->_coreRegistry = $registry;
         
     }
 
     /**
      * @return \Ashsmith\Blog\Model\Post
      */
-    public function getPost()
+    public function getSurvey()
     {
         // Check if posts has already been defined
         // makes our block nice and re-usable! We could
         // pass the 'posts' data to this block, with a collection
         // that has been filtered differently!
-        if (!$this->hasData('post')) {
-            if ($this->getSurveyId()) {
-                /** @var \Ashsmith\Blog\Model\Post $page */
-                $post = $this->_post->load(1);
-            } else {
-                $post = $this->_post;
-            }
-            $this->setData('post', $post);
+        if (!$this->hasData('survey')) {
+            $this->setData('survey',$this->_coreRegistry->register('current_survey'));
         }
-        return $this->getData('post');
+        
+        
+        return $this->getData('survey');
+    }
     }
 
    
