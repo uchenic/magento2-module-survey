@@ -5,11 +5,29 @@ $post = $block->getSurvey();
 
 ?>
 <h1 class="blog-post-item-title"><?php echo $post->getName() ?></h1>
-
+<form action="/surevey/form/submit" method="POST">
+<input type="hidden" name="user" value="<?php $block->getUser(); ?>">
+<input type="hidden" name="survey" value="<?php $post->getId(); ?>">
 <div class="blog-post-item-content">
-    <?php //echo $post->getContent(); ?>
-</div>
+    <?php foreach ($block->getQuestions($post->getId()) as $post): ?>
+    <li class="blog-post-list-item">
+        
 
+        <div class="blog-post-item-content">
+            <?php echo $post->getQuestion(); ?>
+        </div>
+        <?php foreach ($block->getQuestionAnswers($post->getId()) as $answer) : ?>
+
+        	<input type="radio"  name="answ-<?php   echo $answer->getQuestionId().'-'.$answer->getId();?>" id="answ-<?php   echo $answer->getQuestionId().'-'.$answer->getId();?>" value="<?php   echo $answer->getId();?>">
+          <label for="answ-<?php   echo $answer->getQuestionId().'-'.$answer->getId();?>"><?php   echo $answer->getAnswer();?></label> 
+       
+        
+       <?php endforeach; ?>
+    </li>
+<?php endforeach; ?>
+</div>
+<input type="submit" />
+</form>
 <div class="blog-post-item-meta">
     <strong><?php // ?></strong> <?php //echo $post->getCreationTime() ?>
 </div>

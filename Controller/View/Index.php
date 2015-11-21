@@ -12,21 +12,22 @@ class Index extends Action
 
     protected $_survey;
 
-    $this->_coreRegistry = $coreRegistry;
+    protected $_coreRegistry;
 
     /**
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(\Magento\Framework\App\Action\Context $context,
+                                \Magento\Framework\Registry $coreRegistry,
                                 \Magento\Framework\Controller\Result\ForwardFactory $resultForwardFactory,
                                 \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-                                \Magento\Framework\Registry $coreRegistry,
                                 \Magento\Survey\Model\Survey $survey
     )
     {
         $this->resultForwardFactory = $resultForwardFactory;
         $this->resultPageFactory = $resultPageFactory;
-        $this->_survey=$survey;
+        $this->_survey = $survey;
+        $this->_coreRegistry = $coreRegistry;
         //$this->_surveyFactory=$surveyFactory;
         parent::__construct($context);
     }
