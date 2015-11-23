@@ -15,7 +15,7 @@ class Result extends AbstractDb
      * @param string|null $resourcePrefix
      */
     public function __construct(
-        \Magento\Framework\Model\Resource\Db\Context $context,
+        \Magento\Framework\Model\ResourceModel\Db\Context $context,
         
         $resourcePrefix = null
     ) {

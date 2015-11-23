@@ -1,6 +1,6 @@
 <?php 
 namespace Magento\Survey\Model\Resource;
-use \Magento\Framework\Model\Resource\Db\AbstractDb;
+use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Survey extends AbstractDb
 {
@@ -15,7 +15,7 @@ class Survey extends AbstractDb
      * @param string|null $resourcePrefix
      */
     public function __construct(
-        \Magento\Framework\Model\Resource\Db\Context $context,
+        \Magento\Framework\Model\ResourceModel\Db\Context $context,
         
         $resourcePrefix = null
     ) {
