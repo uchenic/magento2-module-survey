@@ -7,7 +7,7 @@ $post = $block->getSurvey();
 <h1 class="blog-post-item-title"><?php echo $post->getName() ?></h1>
 <form action="/surevey/form/submit" method="POST">
 <input type="hidden" name="user" value="<?php $block->getUser(); ?>">
-<input type="hidden" name="survey" value="<?php $post->getId(); ?>">
+<input type="hidden" name="survey" value="<?php $post->getEntityId(); ?>">
 <div class="blog-post-item-content">
     <?php foreach ($block->getQuestions($post->getId()) as $post): ?>
     <li class="blog-post-list-item">

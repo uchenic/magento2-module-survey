@@ -79,12 +79,12 @@ class Form extends \Magento\Framework\View\Element\Template
         // makes our block nice and re-usable! We could
         // pass the 'posts' data to this block, with a collection
         // that has been filtered differently!
-        if (!$this->hasData('user')) {
-            $this->setData('user',$this->_coreRegistry->registry('current_survey_user'));
+        if (!$this->hasData('user_hash')) {
+            $this->setData('user_hash',$this->_coreRegistry->registry('current_survey_user'));
         }
         
         
-        return $this->getData('user');
+        return $this->getData('user_hash');
     }
    
 
