@@ -1,6 +1,6 @@
 <?php 
 namespace Magento\Survey\Model\Resource;
-use \Magento\Framework\Model\Resource\Db\AbstractDb;
+use \Magento\Framework\Model\ResourceModelOdel\Db\AbstractDb;
 
 class Result extends AbstractDb
 {
